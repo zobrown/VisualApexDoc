@@ -345,6 +345,16 @@ public class ApexDoc {
         return null;
     }
 
+    /**
+     * Returns a string containing the scope if the input has one
+     * with the relevant information
+     *
+     * @param str the inputted string
+     *            
+     * @return the scope, or null if none found.
+     *            
+     * 
+     */
     public static String strContainsScope(String str) {
         str = str.toLowerCase();
         for (int i = 0; i < rgstrScope.length; i++) {
@@ -355,6 +365,19 @@ public class ApexDoc {
         return null;
     }
 
+    /**
+     * Walks through the list of comments and fills the property model 
+     * with the relevant information
+     *
+     * @param propertyModel the property model to be populated
+     *            
+     * @param name The name of the property
+     *            
+     * @param lstComments a list of all of the comments
+     *            
+     * @param iLine used in call setNameLine()
+     * 
+     */
     private static void fillPropertyModel(PropertyModel propertyModel, String name, ArrayList<String> lstComments,
             int iLine) {
         propertyModel.setNameLine(name, iLine);
@@ -394,6 +417,21 @@ public class ApexDoc {
         }
     }
 
+    /**
+     * Walks through the list of comments and fills the method model 
+     * with the relevant information
+     *
+     * @param mModel the method model to be populated
+     *            
+     * @param name The name of the method
+     *            
+     * @param lstComments a list of all of the comments
+     *            
+     * @param iLine used in call setNameLine()
+     *            
+     *
+     * 
+     */
     private static void fillMethodModel(MethodModel mModel, String name, ArrayList<String> lstComments, int iLine) {
         mModel.setNameLine(name, iLine);
         boolean inDescription = false;
@@ -495,6 +533,24 @@ public class ApexDoc {
         }
     }
 
+    /**
+     * Walks through the list of comments and fills the class model 
+     * with the relevant information
+     *
+     * @param cModelParent Not currently used in this function
+     *            
+     * @param cModel The current class model
+     *            
+     * @param name The name of the class
+     *            
+     * @param lstComments a list of all of the comments
+     *            
+     * @param iLine used in call setNameLine()
+     *            
+     *
+     * @see ClassModel#setNameLine(String, int)
+     * 
+     */
     private static void fillClassModel(ClassModel cModelParent, ClassModel cModel, String name,
             ArrayList<String> lstComments, int iLine) {
         cModel.setNameLine(name, iLine);
@@ -565,14 +621,15 @@ public class ApexDoc {
         }
     }
 
-    /*************************************************************************
-     * strPrevWord
+    /**
+     * Finds the previous word in the supplied string 
+     * from starting from the supplied position
      *
-     * @param str
-     *            - string to search
-     * @param iSearch
-     *            - where to start searching backwards from
-     * @return - the previous word, or null if none found.
+     * @param str string to search
+     *            
+     * @param iSearch where to start searching backwards from
+     *            
+     * @return the previous word, or null if none found.
      */
     public static String strPrevWord(String str, int iSearch) {
         if (str == null)
@@ -599,11 +656,11 @@ public class ApexDoc {
             return str.substring(iStart, iEnd);
     }
 
-    /*************************************************************************
-     * @description Count the number of occurrences of character in the string
-     * @param str
-     * @param ch
-     * @return int
+    /**
+     * Count the number of occurrences of character in the string
+     * @param str string to search
+     * @param ch character to search
+     * @return total number of occurences
      */
     private static int countChars(String str, char ch) {
         int count = 0;
